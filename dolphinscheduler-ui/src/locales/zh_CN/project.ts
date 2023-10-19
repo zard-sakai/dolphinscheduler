@@ -229,7 +229,7 @@ export default {
     block: '锁定',
     want_to_set_timing: '现在想去配置该工作流定时?',
     confirm_to_online: '是否确定上线该工作流?',
-    confirm_to_offline: '是否确定下线该工作流?',
+    confirm_to_offline: '是否确定下线该工作流?'
   },
   task: {
     on_line: '线上',
@@ -805,8 +805,10 @@ export default {
     please_select_target_database: '请选择目标数据库',
     please_enter_target_table: '请选择目标数据表',
     please_enter_target_filter_expression: '请输入目标表过滤条件',
-    please_enter_comparison_name_the_alias_in_comparison_execute_sql: '请输入期望值名',
-    please_enter_statistics_name_the_alias_in_statistics_execute_sql: '请输入实际值名',
+    please_enter_comparison_name_the_alias_in_comparison_execute_sql:
+      '请输入期望值名',
+    please_enter_statistics_name_the_alias_in_statistics_execute_sql:
+      '请输入实际值名',
     please_enter_comparison_execute_sql: '请输入期望值计算SQL',
     please_enter_statistics_execute_sql: '请输入实际值计算SQL',
     custom_config: '自定义配置',
@@ -852,7 +854,7 @@ export default {
     child_node_definition: '子节点定义',
     child_node_instance: '子节点实例',
     yarn_queue: 'Yarn队列',
-    yarn_queue_tips: '请输入Yarn队列(选填)',
+    yarn_queue_tips: '请输入Yarn队列(选填)'
   },
   menu: {
     fav: '收藏组件',
@@ -879,15 +881,16 @@ export default {
     edit: '编辑',
     delete: '删除',
     delete_confirm: '确定删除吗?',
-    success: '成功',
+    success: '成功'
   },
   preference: {
     edit_preference: '修改项目偏好设置',
     preference_manage: '项目偏好管理',
-    instruction_tips: '下面这些项目偏好配置将影响这个项目下的所有工作流和任务。当创建工作流和任务时，这些配置将影响组件中的默认选项',
+    instruction_tips:
+      '下面这些项目偏好配置将影响这个项目下的所有工作流和任务。当创建工作流和任务时，这些配置将影响组件中的默认选项',
     success: '成功',
     submit: '提交',
     enabled: '启用',
     disabled: '未启用'
-  },
+  }
 }

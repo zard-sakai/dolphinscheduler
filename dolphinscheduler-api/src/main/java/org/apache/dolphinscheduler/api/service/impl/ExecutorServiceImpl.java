@@ -803,6 +803,7 @@ public class ExecutorServiceImpl extends BaseServiceImpl implements ExecutorServ
         if (processDefinition != null) {
             command.setProcessDefinitionVersion(processDefinition.getVersion());
         }
+        // Gill: 启动工作流： ProcessInstanceId = 0
         command.setProcessInstanceId(0);
 
         // determine whether to complement

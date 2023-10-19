@@ -15,10 +15,10 @@
  * limitations under the License.
 */
 
-ALTER TABLE t_ds_process_definition DROP tenant_id;
-ALTER TABLE t_ds_process_definition_log DROP tenant_id;
-ALTER TABLE t_ds_process_instance DROP tenant_id;
-
+-- ALTER TABLE t_ds_process_definition DROP tenant_id;
+-- ALTER TABLE t_ds_process_definition_log DROP tenant_id;
+-- ALTER TABLE t_ds_process_instance DROP tenant_id;
+--
 SET FOREIGN_KEY_CHECKS = 0;
 -- auto detect by atlas, see more detail in https://github.com/apache/dolphinscheduler/pull/14620
 ALTER TABLE `QRTZ_BLOB_TRIGGERS` COLLATE utf8_bin, MODIFY COLUMN `SCHED_NAME` varchar(120) NOT NULL, MODIFY COLUMN `TRIGGER_NAME` varchar(200) NOT NULL, MODIFY COLUMN `TRIGGER_GROUP` varchar(200) NOT NULL;

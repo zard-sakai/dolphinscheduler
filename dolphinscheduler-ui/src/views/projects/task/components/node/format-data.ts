@@ -31,7 +31,6 @@ export function formatParams(data: INodeData): {
   upstreamCodes: string
   taskDefinitionJsonObj: object
 } {
-
   const taskParams: ITaskParams = {}
   if (data.taskType === 'SUB_PROCESS' || data.taskType === 'DYNAMIC') {
     taskParams.processDefinitionCode = data.processDefinitionCode

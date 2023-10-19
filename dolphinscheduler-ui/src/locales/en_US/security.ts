@@ -168,7 +168,8 @@ export default {
     user_password: 'Password',
     user_password_tips:
       'Please enter a password containing letters and numbers with a length between 6 and 20',
-    confirm_password_tips: 'The both of password and confirm password are not same.',
+    confirm_password_tips:
+      'The both of password and confirm password are not same.',
     user_type: 'User Type',
     ordinary_user: 'Ordinary users',
     administrator: 'Administrator',

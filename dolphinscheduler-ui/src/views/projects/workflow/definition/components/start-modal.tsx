@@ -433,8 +433,8 @@ export default defineComponent({
                   </NFormItem>
                 )}
                 <NFormItem
-                    label={t('project.workflow.order_of_execution')}
-                    path='executionOrder'
+                  label={t('project.workflow.order_of_execution')}
+                  path='executionOrder'
                 >
                   <NRadioGroup v-model:value={this.startForm.executionOrder}>
                     <NSpace>

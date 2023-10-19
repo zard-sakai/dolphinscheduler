@@ -33,9 +33,9 @@ spring:
       spec: maximumSize=100,expireAfterWrite=300s,recordStats
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:33060/dolphinscheduler
+    url: jdbc:mysql://127.0.0.1:3306/dolphinscheduler?useSSL=false
     username: root
-    password:
+    password: root
     hikari:
       connection-test-query: select 1
       minimum-idle: 5

@@ -231,7 +231,7 @@ export default {
     block: 'Block',
     want_to_set_timing: 'Would you like to set the workflow timing?',
     confirm_to_online: 'Confirm to make the workflow online?',
-    confirm_to_offline: 'Confirm to make the workflow offline?',
+    confirm_to_offline: 'Confirm to make the workflow offline?'
   },
   task: {
     on_line: 'Online',
@@ -825,9 +825,12 @@ export default {
     please_select_target_datasource: 'Please select target datasource id',
     please_select_target_database: 'Please select target database',
     please_enter_target_table: 'Please select target table name',
-    please_enter_target_filter_expression: 'Please enter target filter expression',
-    please_enter_comparison_name_the_alias_in_comparison_execute_sql: 'Please enter comparison name the alias in comparison execute sql',
-    please_enter_statistics_name_the_alias_in_statistics_execute_sql: 'Please enter statistics name the alias in statistics execute sql',
+    please_enter_target_filter_expression:
+      'Please enter target filter expression',
+    please_enter_comparison_name_the_alias_in_comparison_execute_sql:
+      'Please enter comparison name the alias in comparison execute sql',
+    please_enter_statistics_name_the_alias_in_statistics_execute_sql:
+      'Please enter statistics name the alias in statistics execute sql',
     please_enter_comparison_execute_sql: 'Please enter comparison execute sql',
     please_enter_statistics_execute_sql: 'Please enter statistics execute sql',
     please_enter_threshold_number_is_needed:
@@ -878,7 +881,7 @@ export default {
     child_node_definition: 'child node definition',
     child_node_instance: 'child node instance',
     yarn_queue: 'Yarn Queue',
-    yarn_queue_tips: 'Please input yarn queue(optional)',
+    yarn_queue_tips: 'Please input yarn queue(optional)'
   },
   menu: {
     fav: 'Favorites',
@@ -905,15 +908,16 @@ export default {
     edit: 'Edit',
     delete: 'Delete',
     delete_confirm: 'Delete?',
-    success: 'Success',
+    success: 'Success'
   },
   preference: {
     edit_preference: 'Edit Preference',
     preference_manage: 'Project Preference Management',
-    instruction_tips: 'The settings below will affect all workflows and tasks under this project.When creating the workflow or task, these preferences will be the default value of their components.',
+    instruction_tips:
+      'The settings below will affect all workflows and tasks under this project.When creating the workflow or task, these preferences will be the default value of their components.',
     success: 'Success',
     submit: 'Submit',
     enabled: 'Enabled',
     disabled: 'Disabled'
-  },
+  }
 }
