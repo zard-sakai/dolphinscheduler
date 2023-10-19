@@ -107,7 +107,7 @@ public class MySQLDataSourceProcessor extends AbstractDataSourceProcessor {
 
     @Override
     public String getDatasourceDriver() {
-        return DataSourceConstants.COM_MYSQL_CJ_JDBC_DRIVER;
+        return DataSourceConstants.COM_MYSQL_JDBC_DRIVER;
     }
 
     @Override
