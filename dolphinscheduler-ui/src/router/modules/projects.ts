@@ -38,7 +38,7 @@ export default {
       meta: {
         title: '项目',
         activeMenu: 'projects',
-        showSide: false,
+        showSide: true,
         auth: []
       }
     },
