@@ -77,7 +77,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * process definition controller
+ * process definition controller 工作流定义相关 controller
  */
 @Tag(name = "PROCESS_DEFINITION_TAG")
 @RestController
@@ -211,7 +211,7 @@ public class ProcessDefinitionController extends BaseController {
 
     /**
      * update process definition, with whole process definition object including task definition, task relation and location.
-     *
+     *  更新工作流
      * @param loginUser login user
      * @param projectCode project code
      * @param name process definition name
