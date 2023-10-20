@@ -72,7 +72,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * executor controller
+ * executor controller  工作流调度相关
  */
 @Tag(name = "EXECUTOR_TAG")
 @RestController
@@ -304,7 +304,7 @@ public class ExecutorController extends BaseController {
 
     /**
      * do action to process instance: pause, stop, repeat, recover from pause, recover from stop
-     *
+     * 工作流调度
      * @param loginUser login user
      * @param projectCode project code
      * @param processInstanceId process instance id
