@@ -1963,7 +1963,7 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
                 getPreVarPool(task, preTaskList);
             }
             DependResult dependResult = getDependResultForTask(task);
-            if (DependResult.SUCCESS == dependResult) {
+            if (DependResult.SUCCESS == dependResult) {// 真正执行任务
                 log.info("The dependResult of task {} is success, so ready to submit to execute", task.getName());
                 if (!executeTask(task)) {
                     this.taskFailedSubmit = true;
