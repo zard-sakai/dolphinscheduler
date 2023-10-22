@@ -117,14 +117,14 @@ public class MasterSchedulerBootstrap extends BaseDaemonThread implements AutoCl
                 // todo: if the workflow event queue is much, we need to handle the back pressure
                 boolean isOverload =
                         OSUtils.isOverload(masterConfig.getMaxCpuLoadAvg(), masterConfig.getReservedMemory());
-                if (isOverload) {
+                if (isOverload) {//断点
                     log.warn("The current server is overload, cannot consumes commands.");
                     MasterServerMetrics.incMasterOverload();
                     Thread.sleep(Constants.SLEEP_TIME_MILLIS);
                     continue;
                 }
                 List<Command> commands = findCommands();
-                if (CollectionUtils.isEmpty(commands)) {
+                if (CollectionUtils.isEmpty(commands)) {//断点
                     // indicate that no command ,sleep for 1s
                     Thread.sleep(Constants.SLEEP_TIME_MILLIS);
                     continue;
@@ -173,10 +173,10 @@ public class MasterSchedulerBootstrap extends BaseDaemonThread implements AutoCl
             long scheduleStartTime = System.currentTimeMillis();
             int thisMasterSlot = masterSlotManager.getSlot();
             int masterCount = masterSlotManager.getMasterSize();
-            if (masterCount <= 0) {
+            if (masterCount <= 0) {//断点
                 log.warn("Master count: {} is invalid, the current slot: {}", masterCount, thisMasterSlot);
                 return Collections.emptyList();
-            }
+            }// thisMasterSlot：当前空闲的 Master槽位：从0开始   masterCount： master 的数量
             int pageSize = masterConfig.getFetchCommandNum();
             final List<Command> result =
                     commandService.findCommandPageBySlot(pageSize, masterCount, thisMasterSlot);

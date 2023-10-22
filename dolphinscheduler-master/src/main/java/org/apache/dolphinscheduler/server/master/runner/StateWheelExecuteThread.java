@@ -132,7 +132,7 @@ public class StateWheelExecuteThread extends BaseDaemonThread {
         for (Integer processInstanceId : processInstanceTimeoutCheckList) {
             try (
                     LogUtils.MDCAutoClosableContext mdcAutoClosableContext =
-                            LogUtils.setWorkflowInstanceIdMDC(processInstanceId)) {
+                            LogUtils.setWorkflowInstanceIdMDC(processInstanceId)) {// 超时校验
                 WorkflowExecuteRunnable workflowExecuteThread = processInstanceExecCacheManager.getByProcessInstanceId(
                         processInstanceId);
                 if (workflowExecuteThread == null) {

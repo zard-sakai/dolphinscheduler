@@ -773,7 +773,7 @@ public class ProcessDefinitionServiceImpl extends BaseServiceImpl implements Pro
             log.warn("Parameter description is too long.");
             putMsg(result, Status.DESCRIPTION_TOO_LONG_ERROR);
             return result;
-        }
+        }// 分别获取 任务节点list->taskDefinitionLogs  边list->taskRelationList
         List<TaskDefinitionLog> taskDefinitionLogs = generateTaskDefinitionList(taskDefinitionJson);
         List<ProcessTaskRelationLog> taskRelationList = generateTaskRelationList(taskRelationJson, taskDefinitionLogs);
 

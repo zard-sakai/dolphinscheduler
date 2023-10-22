@@ -88,7 +88,7 @@ public class WorkflowExecuteContextFactory {
         int slot = masterSlotManager.getSlot();
         int masterSize = masterSlotManager.getMasterSize();
         SlotCheckState state;
-        if (masterSize <= 0) {
+        if (masterSize <= 0) {// 断点
             state = SlotCheckState.CHANGE;
         } else if (command.getId() % masterSize == slot) {
             state = SlotCheckState.PASS;

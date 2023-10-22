@@ -728,7 +728,7 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
                 initTaskQueue();
                 workflowRunnableStatus = WorkflowRunnableStatus.INITIALIZE_QUEUE;
                 log.info("workflowStatue changed to :{}", workflowRunnableStatus);
-            }
+            }// 初始化 workflow instance 对应的   task instance
             if (workflowRunnableStatus == WorkflowRunnableStatus.INITIALIZE_QUEUE) {
                 submitPostNode(null);
                 workflowRunnableStatus = WorkflowRunnableStatus.STARTED;
@@ -830,6 +830,7 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
             List<TaskInstance> validTaskInstanceList =
                     taskInstanceDao.queryValidTaskListByWorkflowInstanceId(workflowInstance.getId(),
                             workflowInstance.getTestFlag());
+            //
             for (TaskInstance task : validTaskInstanceList) {
                 try (
                         final LogUtils.MDCAutoClosableContext mdcAutoClosableContext =
@@ -1311,7 +1312,7 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
         return validTaskInstanceList;
     }
 
-    private void submitPostNode(Long parentNodeCode) throws StateEventHandleException {
+    private void submitPostNode(Long parentNodeCode) throws StateEventHandleException {// 初始化 task instance
         ProcessInstance workflowInstance = workflowExecuteContext.getWorkflowInstance();
         DAG<Long, TaskNode, TaskNodeRelation> dag = workflowExecuteContext.getWorkflowGraph().getDag();
 

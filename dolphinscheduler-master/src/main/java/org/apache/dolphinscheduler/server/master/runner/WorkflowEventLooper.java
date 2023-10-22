@@ -79,7 +79,7 @@ public class WorkflowEventLooper extends BaseDaemonThread implements AutoCloseab
     public void run() {
         WorkflowEvent workflowEvent;
         while (RUNNING_FLAG.get()) {
-            try {
+            try {// 断点
                 workflowEvent = workflowEventQueue.poolEvent();
             } catch (InterruptedException e) {
                 log.warn("WorkflowEventLooper thread is interrupted, will close this loop");
@@ -88,11 +88,11 @@ public class WorkflowEventLooper extends BaseDaemonThread implements AutoCloseab
             }
             try (
                     LogUtils.MDCAutoClosableContext mdcAutoClosableContext =
-                            LogUtils.setWorkflowInstanceIdMDC(workflowEvent.getWorkflowInstanceId())) {
+                            LogUtils.setWorkflowInstanceIdMDC(workflowEvent.getWorkflowInstanceId())) {// 断点
                 log.info("Begin to handle WorkflowEvent: {}", workflowEvent);
                 WorkflowEventHandler workflowEventHandler =
                         workflowEventHandlerMap.get(workflowEvent.getWorkflowEventType());
-                workflowEventHandler.handleWorkflowEvent(workflowEvent);
+                workflowEventHandler.handleWorkflowEvent(workflowEvent);// 断点
                 log.info("Success handle WorkflowEvent: {}", workflowEvent);
             } catch (WorkflowEventHandleException workflowEventHandleException) {
                 log.error("Handle workflow event failed, will retry again: {}", workflowEvent,
