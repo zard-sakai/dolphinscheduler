@@ -66,7 +66,7 @@ public class GlobalTaskDispatchWaitingQueueLooper extends BaseDaemonThread imple
     public void run() {
         DefaultTaskExecuteRunnable defaultTaskExecuteRunnable;
         while (RUNNING_FLAG.get()) {
-            try {
+            try {// 分发任务到 worker
                 defaultTaskExecuteRunnable = globalTaskDispatchWaitingQueue.takeNeedToDispatchTaskExecuteRunnable();
             } catch (InterruptedException e) {
                 log.warn("Get waiting dispatch task failed, the current thread has been interrupted, will stop loop");
