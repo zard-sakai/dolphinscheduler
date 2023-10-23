@@ -76,7 +76,7 @@ public class WorkerTaskDispatchProcessor implements WorkerRpcProcessor {
     @Counted(value = "ds.task.execution.count", description = "task execute total count")
     @Timed(value = "ds.task.execution.duration", percentiles = {0.5, 0.75, 0.95, 0.99}, histogram = true)
     @Override
-    public void process(Channel channel, Message message) {
+    public void process(Channel channel, Message message) {// worker 接收 master 的 rpc 调度请求
         TaskDispatchRequest taskDispatchRequest = JSONUtils.parseObject(message.getBody(), TaskDispatchRequest.class);
         log.info("Receive TaskDispatchMessage, command: {}", taskDispatchRequest);
         TaskExecutionContext taskExecutionContext = taskDispatchRequest.getTaskExecutionContext();
