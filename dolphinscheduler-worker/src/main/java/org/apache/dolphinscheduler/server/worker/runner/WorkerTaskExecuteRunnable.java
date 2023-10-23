@@ -172,7 +172,7 @@ public abstract class WorkerTaskExecuteRunnable implements Runnable {
                     .build();
 
             TaskInstanceLogHeader.printExecuteTaskHeader();
-            executeTask(taskCallBack);
+            executeTask(taskCallBack);// worker 执行 任务
 
             TaskInstanceLogHeader.printFinalizeTaskHeader();
             afterExecute();
