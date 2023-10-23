@@ -1472,23 +1472,23 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
         }
         TaskNode taskNode = dag.getNode(taskCode);
         List<Long> indirectDepCodeList = new ArrayList<>();
-        setIndirectDepList(taskCode, indirectDepCodeList);
-        for (Long depsNode : indirectDepCodeList) {
+        setIndirectDepList(taskCode, indirectDepCodeList);// 获取 node 简介依赖
+        for (Long depsNode : indirectDepCodeList) {// 依赖的任务依然在DAG，且依赖的任务并没有被跳过
             if (dag.containsNode(depsNode) && !skipTaskNodeMap.containsKey(depsNode)) {
                 // dependencies must be fully completed
                 if (!completeTaskSet.contains(depsNode)) {
-                    return DependResult.WAITING;
+                    return DependResult.WAITING;// 依赖任务还在执行中
                 }
 
                 Optional<TaskInstance> existTaskInstanceOptional = getTaskInstance(depsNode);
-                if (!existTaskInstanceOptional.isPresent()) {
-                    return DependResult.NON_EXEC;
+                if (!existTaskInstanceOptional.isPresent()) {// 没被传递
+                    return DependResult.NON_EXEC;// 依赖任务还没执行
                 }
 
                 TaskExecutionStatus depTaskState =
                         taskInstanceMap.get(existTaskInstanceOptional.get().getId()).getState();
                 if (depTaskState.isKill()) {
-                    return DependResult.NON_EXEC;
+                    return DependResult.NON_EXEC;// 依赖任务被kill， 返回 依赖任务还没执行
                 }
                 // ignore task state if current task is block
                 if (taskNode.isBlockingTask()) {
@@ -1962,10 +1962,10 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
                 Set<Long> preTaskList = new HashSet<>(JSONUtils.toList(preTasks, Long.class));
                 getPreVarPool(task, preTaskList);
             }
-            DependResult dependResult = getDependResultForTask(task);
+            DependResult dependResult = getDependResultForTask(task);// 只有 依赖都执行完成的任务 才允许 submit
             if (DependResult.SUCCESS == dependResult) {// 真正执行任务
                 log.info("The dependResult of task {} is success, so ready to submit to execute", task.getName());
-                if (!executeTask(task)) {
+                if (!executeTask(task)) {// task执行失败
                     this.taskFailedSubmit = true;
                     // Remove and add to complete map and error map
                     if (!removeTaskFromStandbyList(task)) {
@@ -1985,7 +1985,7 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
                             task.getProcessInstanceId(),
                             task.getId(),
                             task.getTaskCode());
-                } else {
+                } else {// task执行成功
                     removeTaskFromStandbyList(task);
                 }
             } else if (DependResult.FAILED == dependResult) {

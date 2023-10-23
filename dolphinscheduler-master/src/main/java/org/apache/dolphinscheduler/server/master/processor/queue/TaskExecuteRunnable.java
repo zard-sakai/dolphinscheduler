@@ -54,7 +54,7 @@ public class TaskExecuteRunnable implements Runnable {
                     final LogUtils.MDCAutoClosableContext mdcAutoClosableContext = LogUtils
                             .setWorkflowAndTaskInstanceIDMDC(event.getProcessInstanceId(), event.getTaskInstanceId())) {
                 log.info("Handle task event begin: {}", event);
-                taskEventHandlerMap.get(event.getEvent()).handleTaskEvent(event);
+                taskEventHandlerMap.get(event.getEvent()).handleTaskEvent(event);// 处理task事件
                 events.remove(event);
                 log.info("Handle task event finished: {}", event);
             } catch (TaskEventHandleException taskEventHandleException) {
