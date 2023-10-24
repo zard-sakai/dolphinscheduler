@@ -43,7 +43,7 @@ public class WorkflowStateEventHandler implements StateEventHandler {
         log.info(
                 "Handle workflow instance state event, the current workflow instance state {} will be changed to {}",
                 processInstance.getState(), workflowStateEvent.getStatus());
-
+        // 处理 master 模块 接收到 的 api 的 工作流变更事件
         if (workflowStateEvent.getStatus().isStop()) {
             // serial wait execution type needs to wake up the waiting process
             if (processDefinition.getExecutionType().typeIsSerialWait() || processDefinition.getExecutionType()

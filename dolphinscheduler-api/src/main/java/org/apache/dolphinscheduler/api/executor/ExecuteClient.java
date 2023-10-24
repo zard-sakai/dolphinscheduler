@@ -53,7 +53,7 @@ public class ExecuteClient {
         ExecuteFunctionBuilder<ExecuteRequest, ExecuteResult> executeFunctionBuilder = checkNotNull(
                 executorFunctionBuilderMap.get(executeContext.getExecuteType()),
                 String.format("The executeType: %s is not supported", executeContext.getExecuteType()));
-
+        // 构造事件，通过 rpc请求 发送给 master 模块
         return executeFunctionBuilder.createWorkflowInstanceExecuteFunction(executeContext)
                 .thenCombine(executeFunctionBuilder.createWorkflowInstanceExecuteRequest(executeContext),
                         ExecuteFunction::execute)

@@ -107,7 +107,7 @@ public class StateEventResponseService {
         }
 
         @Override
-        public void run() {
+        public void run() {// 处理 api 发送的 event 事件
             log.info("State event loop service started");
             while (!ServerLifeCycleManager.isStopped()) {
                 StateEvent stateEvent;
@@ -150,7 +150,7 @@ public class StateEventResponseService {
             WorkflowExecuteRunnable workflowExecuteThread =
                     this.processInstanceExecCacheManager.getByProcessInstanceId(stateEvent.getProcessInstanceId());
             // We will refresh the task instance status first, if the refresh failed the event will not be removed
-            switch (stateEvent.getType()) {
+            switch (stateEvent.getType()) {// master 接收到 api模块发送的 工作流/任务 的 状态改变事件
                 case TASK_STATE_CHANGE:
                     workflowExecuteThread.refreshTaskInstance(stateEvent.getTaskInstanceId());
                     break;

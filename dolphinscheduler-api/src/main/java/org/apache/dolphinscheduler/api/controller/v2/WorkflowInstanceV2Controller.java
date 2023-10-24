@@ -147,7 +147,7 @@ public class WorkflowInstanceV2Controller extends BaseController {
     @AccessLogAnnotation(ignoreRequestArgs = "loginUser")
     public Result execute(@Parameter(hidden = true) @RequestAttribute(value = Constants.SESSION_USER) User loginUser,
                           @PathVariable("workflowInstanceId") Integer workflowInstanceId,
-                          @PathVariable("executeType") ExecuteType executeType) {
+                          @PathVariable("executeType") ExecuteType executeType) {// 更新 工作流状态，发送 事件 给 master 模块
         Map<String, Object> result = execService.execute(loginUser, workflowInstanceId, executeType);
         return returnDataList(result);
     }

@@ -290,7 +290,7 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
                                 .orElseThrow(() -> new StateEventHandleError(
                                         "Cannot find handler for the given state event"));
                 log.info("Begin to handle state event, {}", stateEvent);
-                if (stateEventHandler.handleStateEvent(this, stateEvent)) {
+                if (stateEventHandler.handleStateEvent(this, stateEvent)) {// 处理 工作流/任务 事件
                     this.stateEvents.remove(stateEvent);
                 }
             } catch (StateEventHandleError stateEventHandleError) {
@@ -1293,7 +1293,7 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
                 completeTaskInstanceMap.put(taskCode, taskInstance);
             } else {
                 // This case will happen when we submit to db failed, then the taskInstanceId is 0
-                log.warn("Cannot find the taskInstance from taskInstanceMap, taskConde: {}",
+                log.warn("Cannot find the taskInstance from taskInstanceMap, taskCode: {}",
                         taskCode);
             }
         });
@@ -1472,7 +1472,7 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
         }
         TaskNode taskNode = dag.getNode(taskCode);
         List<Long> indirectDepCodeList = new ArrayList<>();
-        setIndirectDepList(taskCode, indirectDepCodeList);// 获取 node 简介依赖
+        setIndirectDepList(taskCode, indirectDepCodeList);// 获取 node 间接依赖
         for (Long depsNode : indirectDepCodeList) {// 依赖的任务依然在DAG，且依赖的任务并没有被跳过
             if (dag.containsNode(depsNode) && !skipTaskNodeMap.containsKey(depsNode)) {
                 // dependencies must be fully completed
@@ -1783,7 +1783,7 @@ public class WorkflowExecuteRunnable implements IWorkflowExecuteRunnable {
     private void updateProcessInstanceState() throws StateEventHandleException {
         ProcessInstance workflowInstance = workflowExecuteContext.getWorkflowInstance();
         WorkflowExecutionStatus state = getProcessInstanceState(workflowInstance);
-        if (workflowInstance.getState() != state) {
+        if (workflowInstance.getState() != state) {// 工作流执行期间，页面停止，取消等操作会 使得操作改变；
             log.info("Update workflowInstance states, origin state: {}, target state: {}",
                     workflowInstance.getState(),
                     state);
