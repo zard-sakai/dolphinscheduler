@@ -89,7 +89,7 @@ public class ProcessScheduleTask extends QuartzJobBean {
         }
 
         Command command = new Command();
-        command.setCommandType(CommandType.SCHEDULER);
+        command.setCommandType(CommandType.SCHEDULER);// quartz 定时调度 入口
         command.setExecutorId(schedule.getUserId());
         command.setFailureStrategy(schedule.getFailureStrategy());
         command.setProcessDefinitionCode(schedule.getProcessDefinitionCode());
