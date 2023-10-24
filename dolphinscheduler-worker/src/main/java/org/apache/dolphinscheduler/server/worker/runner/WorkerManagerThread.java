@@ -137,7 +137,7 @@ public class WorkerManagerThread implements Runnable {
                 }
                 if (this.getThreadPoolQueueSize() <= workerExecThreads) {
                     final WorkerDelayTaskExecuteRunnable workerDelayTaskExecuteRunnable = waitSubmitQueue.take();
-                    workerExecService.submit(workerDelayTaskExecuteRunnable);
+                    workerExecService.submit(workerDelayTaskExecuteRunnable);// worker端执行任务
                 } else {
                     WorkerServerMetrics.incWorkerOverloadCount();
                     log.info("Exec queue is full, waiting submit queue {}, waiting exec queue size {}",

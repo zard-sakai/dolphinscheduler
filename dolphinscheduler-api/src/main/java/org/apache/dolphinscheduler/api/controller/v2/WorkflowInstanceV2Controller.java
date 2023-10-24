@@ -128,7 +128,7 @@ public class WorkflowInstanceV2Controller extends BaseController {
         return Result.success();
     }
 
-    /**
+    /** 操作工作流：一键暂停，终止，重跑，暂停恢复，中止恢复 入口
      * do action to workflow instance: pause, stop, repeat, recover from pause, recover from stop
      *
      * @param loginUser login user
