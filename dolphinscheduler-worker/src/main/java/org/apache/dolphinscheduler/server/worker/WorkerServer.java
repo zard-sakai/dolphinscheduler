@@ -80,6 +80,7 @@ public class WorkerServer implements IStoppable {
     @Autowired
     private WorkerConfig workerConfig;
 
+
     /**
      * worker server startup, not use web service
      *
